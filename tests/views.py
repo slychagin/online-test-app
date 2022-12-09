@@ -21,3 +21,15 @@ def tests(request, category_slug=None):
         'test_count': test_count
     }
     return render(request, 'tests/tests.html', context)
+
+
+def test_description(request, category_slug, test_slug):
+    try:
+        single_test = Test.objects.get(category__slug=category_slug, slug=test_slug)
+    except Exception as e:
+        raise e
+
+    context = {
+        'single_test': single_test
+    }
+    return render(request, 'tests/test_description.html', context)

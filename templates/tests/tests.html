@@ -85,7 +85,7 @@
             <div class="post-box">
               <div class="post-img"><img src="{{test.test_image.url}}" class="img-fluid" alt="Test image"></div>
               <h3 class="post-title">{{test.test_name}}</h3>
-              <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Начать тест</span><i class="bi bi-arrow-right"></i></a>
+              <a href="{{test.get_url}}" class="readmore stretched-link mt-auto"><span>Начать тест</span><i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
           {% endfor %}

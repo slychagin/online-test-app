@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from category.models import Category
 
 
@@ -18,6 +19,10 @@ class Test(models.Model):
         """Define how plural form looks in admin panel"""
         verbose_name = 'Тест'
         verbose_name_plural = 'Тесты'
+
+    def get_url(self):
+        """Get reverse url for particular test"""
+        return reverse('test_description', args=[self.category.slug, self.slug])
 
     def __str__(self):
         return self.test_name
