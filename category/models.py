@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -14,6 +15,13 @@ class Category(models.Model):
         """Show correct plural name"""
         verbose_name = 'Категорию'
         verbose_name_plural = 'Категории'
+
+    def get_url(self):
+        """
+        Get category url to use in navbar
+        :return: url for particular category
+        """
+        return reverse('test_by_category', args=[self.slug])
 
     def __str__(self):
         """Show category name in admin panel in string format"""

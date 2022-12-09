@@ -45,6 +45,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
+          <li><a class="nav-link scrollto active" href="{% url 'home' %}">На главную</a></li>
           <li><a class="nav-link scrollto" href="{% url 'tests' %}">Все тесты</a></li>
           <li class="dropdown"><a href="javascript:void(0)"><span>Категории</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -62,33 +63,41 @@
     </div>
   </header><!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="hero d-flex align-items-center">
-
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 d-flex flex-column justify-content-center">
-          <h1 data-aos="fade-up">Онлайн тесты на разные тематики: на эрудицию, психологические, IQ</h1>
-          <h2 data-aos="fade-up" data-aos-delay="400">Пройди наши тесты, узнай свои недостатки и преимущества, проанализируй свое поведение и стань лучше!</h2>
-          <div data-aos="fade-up" data-aos-delay="600">
-            <div class="text-center text-lg-start">
-              <a href="{% url 'tests' %}" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-                <span>К тестам!</span>
-                <i class="bi bi-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
-          <img src="{% static 'img/hero-img.png' %}" class="img-fluid" alt="">
-        </div>
-      </div>
-    </div>
-
-  </section><!-- End Hero -->
 
   <main id="main">
 
+    <!-- ======= Tests Section ======= -->
+    <section id="recent-blog-posts" class="recent-blog-posts">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <br>
+          <br>
+          <h2>Количество тестов: {{test_count}}</h2>
+          <p>Выбери и пройди тест, чтобы узнать о себе больше!</p>
+        </header>
+
+        <div class="row">
+
+          {% for test in all_tests %}
+          <div class="col-lg-4">
+            <div class="post-box">
+              <div class="post-img"><img src="{{test.test_image.url}}" class="img-fluid" alt="Test image"></div>
+              <h3 class="post-title">{{test.test_name}}</h3>
+              <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Начать тест</span><i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+
+      </div>
+
+    </section><!-- End Tests Section -->
+
+
+  </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
@@ -114,7 +123,8 @@
           <div class="col-lg-2 col-6 footer-links">
             <h4>Полезные ссылки</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'tests' %}">К тестам!</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'home' %}">На главную</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'tests' %}">Все тесты</a></li>
             </ul>
           </div>
 
