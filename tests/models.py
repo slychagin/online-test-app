@@ -26,3 +26,19 @@ class Test(models.Model):
 
     def __str__(self):
         return self.test_name
+
+
+class Question(models.Model):
+    """Create question model in database"""
+    objects = models.Manager()
+
+    question = models.TextField(unique=True, verbose_name='Вопрос')
+    test = models.ForeignKey(Test, on_delete=models.CASCADE, verbose_name='Наименование теста')
+
+    class Meta:
+        """Define how plural form looks in admin panel"""
+        verbose_name = 'Вопрос'
+        verbose_name_plural = 'Вопросы'
+
+    def __str__(self):
+        return self.question
