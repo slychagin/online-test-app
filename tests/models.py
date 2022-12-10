@@ -32,7 +32,7 @@ class Question(models.Model):
     """Create question model in database"""
     objects = models.Manager()
 
-    question = models.TextField(unique=True, verbose_name='Вопрос')
+    question = models.TextField(verbose_name='Вопрос')
     test = models.ForeignKey(Test, on_delete=models.CASCADE, verbose_name='Наименование теста')
 
     class Meta:
@@ -42,3 +42,20 @@ class Question(models.Model):
 
     def __str__(self):
         return self.question
+
+
+class Answer(models.Model):
+    """Create answer model in database"""
+    objects = models.Manager()
+
+    answer = models.CharField(max_length=200, verbose_name='Ответ')
+    is_true = models.BooleanField(default=False, verbose_name='Верно')
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name='Вопрос')
+
+    class Meta:
+        """Define how plural form looks in admin panel"""
+        verbose_name = 'Ответ'
+        verbose_name_plural = 'Ответы'
+
+    def __str__(self):
+        return self.answer
