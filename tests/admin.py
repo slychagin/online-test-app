@@ -1,9 +1,11 @@
 from django.contrib import admin
+from tests.form import AnswerInlineFormSet
 from tests.models import Test, Question, Answer
 
 
 class AnswerInline(admin.TabularInline):
     """Display answer fields inline Question model"""
+    formset = AnswerInlineFormSet
     model = Answer
     extra = 0
 
@@ -12,6 +14,7 @@ class QuestionInline(admin.TabularInline):
     """Display question fields inline Test model"""
     model = Question
     extra = 0
+    show_change_link = True
 
 
 class TestAdmin(admin.ModelAdmin):
@@ -20,6 +23,7 @@ class TestAdmin(admin.ModelAdmin):
     search_fields = ('test_name', 'category__category_name')
     list_per_page = 20
     list_max_show_all = 100
+    list_filter = ('category__category_name',)
     prepopulated_fields = {"slug": ("test_name",)}
     inlines = [QuestionInline]
 
@@ -29,6 +33,7 @@ class QuestionAdmin(admin.ModelAdmin):
     list_display = ('question', 'test')
     list_per_page = 20
     list_max_show_all = 100
+    list_filter = ('test__test_name',)
     inlines = [AnswerInline]
 
 
