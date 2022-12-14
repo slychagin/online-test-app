@@ -58,15 +58,23 @@
 
         <div class="col-xl-12 col-lg-12 text-center">
 
-          <h1>{{single_test.test_name}}</h1>
+
+          <h1>{{ question }}</h1>
+
 
            <div class="text-center">
-              <a href="{% url 'question_details' single_test.category.slug single_test.slug first_question_id%}?id={{first_question_id}}" class="btn-get-started scrollto">Начать тест</a>
+             <a href="{% url 'question_details' single_test.category.slug single_test.slug next_question_id %}?id={{next_question_id}}" class="btn-get-started scrollto">Следующий</a>
           </div>
+
+
+
           <br>
           <br>
           <br>
-          <h2>{{single_test.description}}</h2>
+
+
+
+
 
         </div>
       </div>
@@ -88,6 +96,8 @@
 
   <!-- Template Main JS File -->
   <script src="{% static 'js/main.js' %}"></script>
+
+  </main>
 
 </body>
 

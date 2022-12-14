@@ -40,6 +40,10 @@ class Question(models.Model):
         verbose_name = 'Вопрос'
         verbose_name_plural = 'Вопросы'
 
+    # def get_url_q(self):
+    #     """Get reverse url for particular question"""
+    #     return reverse('question_details', args=[self.test.category.slug, self.test.slug, self.pk])
+
     def __str__(self):
         return self.question
 
