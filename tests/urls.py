@@ -10,4 +10,9 @@ urlpatterns = [
         views.question_details,
         name='question_details'
     ),
+    path(
+        '<slug:category_slug>/<slug:test_slug>/results/',
+        views.results,
+        name='results'
+    )
 ]

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from category.models import Category
-from tests.models import Test, Question
+from tests.models import Test, Question, Answer
 
 
 def tests(request, category_slug=None):
@@ -40,7 +40,10 @@ def test_description(request, category_slug, test_slug):
 
 
 def question_details(request, category_slug, test_slug, question_id):
-    """Render question_details.html file"""
+    """
+    Render question_details.html file.
+    Show questions with answers one by one on separate page
+    """
     try:
         single_test = Test.objects.get(category__slug=category_slug, slug=test_slug)
         question_list = Question.objects.filter(test__slug=test_slug)
@@ -49,19 +52,34 @@ def question_details(request, category_slug, test_slug, question_id):
         pk_idx = id_list.index(int(request.GET.get('id')))
 
         if pk_idx == len(question_list) - 1:
+            last_question = True
             next_question_id = question_list[pk_idx].pk
         else:
+            last_question = False
             next_question_id = question_list[pk_idx + 1].pk
 
         question = get_object_or_404(Question, pk=question_id)
+        answers = Answer.objects.filter(question__pk=question_id)
+        print(answers)
 
         context = {
             'single_test': single_test,
             'question': question,
-            'next_question_id': next_question_id
+            'answers': answers,
+            'next_question_id': next_question_id,
+            'last_question': last_question
         }
         return render(request, 'tests/question_details.html', context)
     except Exception as e:
         raise e
 
 
+def results(request, category_slug=None, test_slug=None):
+    """Show test results on separate page"""
+
+
+    context = {
+        'category_slug': category_slug,
+        'test_slug': test_slug
+    }
+    return render(request, 'tests/results.html', context)

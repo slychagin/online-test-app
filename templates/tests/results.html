@@ -58,21 +58,15 @@
 
         <div class="col-xl-12 col-lg-12 text-center">
 
-          <h1>{{ question }}</h1>
+          <h1>Results</h1>
 
-          {% for answer in answers %}
-          <h2>{{answer}}</h2>
-          {% endfor %}
-
-        {% if last_question %}
           <div class="text-center">
-             <a href="{% url 'results' single_test.category.slug single_test.slug %}" class="btn-get-started scrollto">РЕЗУЛЬТАТЫ</a>
+             <a href="{% url 'test_description' category_slug test_slug %}" class="btn-get-started scrollto">Пройти тест еще раз</a>
           </div>
-          {% else %}
+
            <div class="text-center">
-             <a href="{% url 'question_details' single_test.category.slug single_test.slug next_question_id %}?id={{next_question_id}}" class="btn-get-started scrollto">Следующий</a>
+             <a href="{% url 'tests' %}" class="btn-get-started scrollto">К тестам!</a>
           </div>
-        {% endif %}
 
         </div>
       </div>
