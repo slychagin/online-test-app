@@ -1,173 +1,38 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block content %}
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<!-- ======= Tests Section ======= -->
+<section id="recent-blog-posts" class="recent-blog-posts">
 
-  <title>Онлайн тесты</title>
-  <meta content="" name="description">
-
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="{% static 'img/favicon.png' %}" rel="icon">
-  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
-  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
-  <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
-  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="{% static 'css/style.css' %}" rel="stylesheet">
-
-</head>
-
-<body>
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top">
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-
-      <a href="{% url 'home' %}" class="logo d-flex align-items-center">
-        <img src="{% static 'img/logo.png' %}" alt="">
-        <span>TestoMania</span>
-      </a>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="{% url 'home' %}">На главную</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'tests' %}">Все тесты</a></li>
-          <li class="dropdown"><a href="javascript:void(0)"><span>Категории</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              {% for category in links %}
-              <li><a href="{{category.get_url}}">{{category.category_name}}</a></li>
-              {% endfor %}
-            </ul>
-          </li>
-          <li><a class="widget-header" href="#">Вход</a></li>
-          <li><a class="widget-header" href="#">Регистрация</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
-
-
-  <main id="main">
-
-    <!-- ======= Tests Section ======= -->
-    <section id="recent-blog-posts" class="recent-blog-posts">
-
-      <div class="container" data-aos="fade-up">
+    <div class="container" data-aos="fade-up">
 
         <header class="section-header">
-          <br>
-          <br>
-          <h2>Количество тестов: {{test_count}}</h2>
-          <p>Выбери и пройди тест, чтобы узнать о себе больше!</p>
+            <br>
+            <br>
+            <h2>Количество тестов: {{test_count}}</h2>
+            <p>Выбери и пройди тест, чтобы узнать о себе больше!</p>
         </header>
 
         <div class="row">
 
-          {% for test in all_tests %}
-          <div class="col-lg-4">
-            <div class="post-box">
-              <div class="post-img"><img src="{{test.test_image.url}}" class="img-fluid" alt="Test image"></div>
-              <h3 class="post-title">{{test.test_name}}</h3>
-              <a href="{{test.get_url}}" class="readmore stretched-link mt-auto"><span>Начать тест</span><i class="bi bi-arrow-right"></i></a>
+            {% for test in all_tests %}
+            <div class="col-lg-4">
+                <div class="post-box">
+                    <div class="post-img"><img src="{{test.test_image.url}}" class="img-fluid" alt="Test image"></div>
+                    <h3 class="post-title">{{test.test_name}}</h3>
+                    <a href="{{test.get_url}}" class="readmore stretched-link mt-auto"><span>Начать тест</span><i
+                            class="bi bi-arrow-right"></i></a>
+                </div>
             </div>
-          </div>
-          {% endfor %}
+            {% endfor %}
 
         </div>
 
-      </div>
-
-    </section><!-- End Tests Section -->
-
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-
-    <div class="footer-top">
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-5 col-md-12 footer-info">
-            <a href="{% url 'home' %}" class="logo d-flex align-items-center">
-              <img src="{% static 'img/logo.png' %}" alt="">
-              <span>TestoMania</span>
-            </a>
-            <p>Мы создаем лучшие интеллектуальные, психологические, образовательные тесты,
-              IQ тесты, для мужчин и женщин. И это далеко не весь перечень!</p>
-            <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-2 col-6 footer-links">
-            <h4>Полезные ссылки</h4>
-            <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'home' %}">На главную</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'tests' %}">Все тесты</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-            <h4>Контакты</h4>
-            <p>
-              ул. Тестовая, 7<br>
-              г. Ростов-на-Дону<br>
-              Россия <br><br>
-              <strong>телефон:</strong> +7(863)777-77-77<br>
-              <strong>email:</strong> onlinetest@example.com<br>
-            </p>
-
-          </div>
-
-        </div>
-      </div>
     </div>
 
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>TestoMania</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
+</section><!-- End Tests Section -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="{% static 'vendor/purecounter/purecounter_vanilla.js' %}"></script>
-  <script src="{% static 'vendor/aos/aos.js' %}"></script>
-  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
-  <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
-  <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
-  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
-
-  <!-- Template Main JS File -->
-  <script src="{% static 'js/main.js' %}"></script>
-
-</body>
-
-</html>
+{% endblock %}
