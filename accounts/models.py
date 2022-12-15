@@ -73,5 +73,5 @@ class Account(AbstractBaseUser):
         return True
 
     class Meta:
-        verbose_name = 'Учетную запись'
+        verbose_name = 'Учетная запись'
         verbose_name_plural = 'Учетные записи'

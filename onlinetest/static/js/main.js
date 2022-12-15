@@ -292,3 +292,10 @@
   new PureCounter();
 
 })();
+
+ /**
+   * Disable pop up message
+   */
+setTimeout(function(){
+    $('#message').fadeOut('slow')
+}, 4000)
