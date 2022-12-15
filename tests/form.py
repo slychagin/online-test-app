@@ -10,7 +10,7 @@ class AnswerInlineFormSet(forms.BaseInlineFormSet):
     """
     class Meta:
         model = Answer
-        fields = ('answer', 'is_true')
+        fields = ('answer', 'is_correct')
 
     def clean(self):
         """
@@ -18,7 +18,7 @@ class AnswerInlineFormSet(forms.BaseInlineFormSet):
         If all answers is correct or all answers is incorrect raise error.
         """
         super(AnswerInlineFormSet, self).clean()
-        data = [item['is_true'] for item in self.cleaned_data]
+        data = [item['is_correct'] for item in self.cleaned_data]
         if all(data):
             raise forms.ValidationError('Хотя бы один ответ должен быть неверным!')
         if not any(data):

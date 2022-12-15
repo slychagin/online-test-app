@@ -1,5 +1,7 @@
+from django.contrib import admin
 from django.db import models
 from django.urls import reverse
+from accounts.models import Account
 from category.models import Category
 
 
@@ -40,10 +42,6 @@ class Question(models.Model):
         verbose_name = 'Вопрос'
         verbose_name_plural = 'Вопросы'
 
-    # def get_url_q(self):
-    #     """Get reverse url for particular question"""
-    #     return reverse('question_details', args=[self.test.category.slug, self.test.slug, self.pk])
-
     def __str__(self):
         return self.question
 
@@ -53,7 +51,7 @@ class Answer(models.Model):
     objects = models.Manager()
 
     answer = models.CharField(max_length=200, verbose_name='Ответ')
-    is_true = models.BooleanField(default=False, verbose_name='Верно')
+    is_correct = models.BooleanField(default=False, verbose_name='Верно')
     question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name='Вопрос')
 
     class Meta:
@@ -63,3 +61,30 @@ class Answer(models.Model):
 
     def __str__(self):
         return self.answer
+
+
+class Results(models.Model):
+    """Create results model in database"""
+    objects = models.Manager()
+
+    user = models.ForeignKey(Account, on_delete=models.CASCADE, verbose_name='Пользователь')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категория')
+    test = models.ForeignKey(Test, on_delete=models.CASCADE, verbose_name='Тест')
+    correct_answer_count = models.IntegerField(verbose_name='Кол-во верных ответов')
+    wrong_answer_count = models.IntegerField(verbose_name='Кол-во неверных ответов')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата прохождения теста')
+    updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата повторного прохождения теста')
+
+    def __str__(self):
+        return self.test.test_name
+
+    @admin.display(description='Процент правильных ответов')
+    def correct_answer_percent(self):
+        """Calculate correct answers percent"""
+        total_question_count = 2
+        correct_percent = round(self.correct_answer_count * 100 / total_question_count)
+        return f'{correct_percent} %'
+
+    class Meta:
+        verbose_name = 'Результат'
+        verbose_name_plural = 'Результаты'
