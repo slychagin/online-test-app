@@ -70,7 +70,9 @@ def question_details(request, category_slug, test_slug, question_id):
                 'next_question_id': next_question_id,
                 'last_question': last_question,
                 'current_question_number': pk_idx + 1,
-                'test_question_amount': len(question_list)
+                'test_question_amount': len(question_list),
+                'category_slug': category_slug,
+                'test_slug': test_slug
             }
 
             if request.method == 'POST':
@@ -86,9 +88,6 @@ def question_details(request, category_slug, test_slug, question_id):
                     request.session['correct_answers'] += 1
                 else:
                     request.session['wrong_answers'] += 1
-
-                print(f'correct_answers: {request.session.get("correct_answers")}')
-                print(f'wrong_answers: {request.session.get("wrong_answers")}')
 
                 if 'last' in request.POST:
                     return redirect('results', category_slug=category_slug, test_slug=test_slug)
