@@ -3,29 +3,34 @@
 
 {% block content %}
 
-<!-- ======= Hero Section ======= -->
 <section id="hero1" class="d-flex align-items-center">
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
         <div class="row justify-content-center">
 
             <div class="col-xl-12 col-lg-12 text-center">
 
-                <h1>Results</h1>
-
                 <div class="text-center">
-                    <a href="{% url 'test_description' category_slug test_slug %}" class="btn-get-started scrollto">Пройти
-                        тест еще раз</a>
+                    <a href="{% url 'tests' %}" class="btn-get-started scrollto"><i class="bi bi-arrow-left">
+                    </i> К тестам!</a>
                 </div>
 
+                <h2>Категория - {{ data.category.category_name }}</h2>
+
+                <h1>Тест "{{ data.test.test_name }}"</h1>
+
                 <div class="text-center">
-                    <a href="{% url 'tests' %}" class="btn-get-started scrollto">К тестам!</a>
+                    <a href="{% url 'test_description' category_slug test_slug %}" class="btn-get-started scrollto">&#8634; Пройти тест еще раз</a>
                 </div>
+
+                <h2>Ваши результаты:</h2>
+                <h2>&#9989; Правильных ответов: {{ data.correct_answer_count }}/{{ test_question_amount }}</h2>
+                <h2>&#10060; Неправильных ответов: {{ data.wrong_answer_count }}/{{ test_question_amount }}</h2>
+                <h2>Процент правильных ответов: {{ data.correct_answer_percent }}</h2>
 
             </div>
         </div>
 
     </div>
-</section><!-- End Hero -->
-
+</section>
 
 {% endblock %}

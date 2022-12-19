@@ -72,18 +72,12 @@ class Results(models.Model):
     test = models.ForeignKey(Test, on_delete=models.CASCADE, verbose_name='Тест')
     correct_answer_count = models.IntegerField(verbose_name='Кол-во верных ответов')
     wrong_answer_count = models.IntegerField(verbose_name='Кол-во неверных ответов')
+    correct_answer_percent = models.CharField(max_length=10, null=True, verbose_name='Процент правильных ответов')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата прохождения теста')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата повторного прохождения теста')
 
     def __str__(self):
         return self.test.test_name
-
-    @admin.display(description='Процент правильных ответов')
-    def correct_answer_percent(self):
-        """Calculate correct answers percent"""
-        total_question_count = 2
-        correct_percent = round(self.correct_answer_count * 100 / total_question_count)
-        return f'{correct_percent} %'
 
     class Meta:
         verbose_name = 'Результат'

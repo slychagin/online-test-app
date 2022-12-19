@@ -3,35 +3,41 @@
 
 {% block content %}
 
-<!-- ======= Hero Section ======= -->
 <section id="hero1" class="d-flex align-items-center">
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
         <div class="row justify-content-center">
 
             <div class="col-xl-12 col-lg-12 text-center">
 
-                <h1>{{ question }}</h1>
+                <form action="{% url 'question_details' single_test.category.slug single_test.slug next_question_id %}?id={{next_question_id}}" method="POST">
+                    {% csrf_token %}
+                    <h1>{{ current_question_number }}/{{ test_question_amount }}</h1>
 
-                {% for answer in answers %}
-                <h2>{{answer}}</h2>
-                {% endfor %}
+                    <h1>{{ question }}</h1>
 
-                {% if last_question %}
-                <div class="text-center">
-                    <a href="{% url 'results' single_test.category.slug single_test.slug %}"
-                       class="btn-get-started scrollto">РЕЗУЛЬТАТЫ</a>
-                </div>
-                {% else %}
-                <div class="text-center">
-                    <a href="{% url 'question_details' single_test.category.slug single_test.slug next_question_id %}?id={{next_question_id}}"
-                       class="btn-get-started scrollto">Следующий</a>
-                </div>
-                {% endif %}
+                    {% for answer in answers %}
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="{{answer.id}}" id="{{answer}}"
+                               name="boxes">
+                        <label class="form-check-label" for="{{answer}}">{{answer}}</label>
+                    </div>
+                    {% endfor %}
+
+                    {% if not last_question %}
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary" name="next">Далее</button>
+                    </div>
+                    {% else %}
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary" name="last">Далее</button>
+                    </div>
+                    {% endif %}
+                </form>
 
             </div>
         </div>
 
     </div>
-</section><!-- End Hero -->
+</section>
 
 {% endblock %}

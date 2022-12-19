@@ -23,22 +23,3 @@ class AnswerInlineFormSet(forms.BaseInlineFormSet):
             raise forms.ValidationError('Хотя бы один ответ должен быть неверным!')
         if not any(data):
             raise forms.ValidationError('Хотя бы один ответ должен быть верным!')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

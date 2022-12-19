@@ -1,5 +1,5 @@
 from django.contrib import admin
-from tests.form import AnswerInlineFormSet
+from tests.forms import AnswerInlineFormSet
 from tests.models import Test, Question, Answer, Results
 
 
