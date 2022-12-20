@@ -22,26 +22,18 @@
 - подключен telegram chatbot, который отправляет сообщение о новом заказе на указанный номер телефона;
 - для удобства использования и администрирования сайта реализована админ панель со всеми необходимыми настройками.
 #
-### Интернет-магазин в работе:
+### Вэб приложение в работе:
 
-#### *Общий вид сайта* :+1:
-![Общий вид сайта](https://github.com/slychagin/mens-line-store/blob/master/demo_gifs/%D0%9E%D0%B1%D1%89%D0%B8%D0%B9%20%D0%B2%D0%B8%D0%B4.gif)
+#### *Общий вид приложения. Тестирование.* :+1:
+![Общий вид приложения](https://github.com/slychagin/online-test-app/blob/master/demo/Testing.gif)
 #
 
-#### *Заказ и оценка товара*
-![Заказ и оценка товара](https://github.com/slychagin/mens-line-store/blob/master/demo_gifs/%D0%97%D0%B0%D0%BA%D0%B0%D0%B7%20%D0%B8%20%D0%BE%D1%86%D0%B5%D0%BD%D0%BA%D0%B0%20%D1%82%D0%BE%D0%B2%D0%B0%D1%80%D0%B0.gif)
+#### *Регистрация*
+![Регистрация](https://github.com/slychagin/online-test-app/blob/master/demo/Register.gif)
 #
 
-#### *Личный кабинет*
-![Личный кабинет](https://github.com/slychagin/mens-line-store/blob/master/demo_gifs/%D0%9B%D0%B8%D1%87%D0%BD%D1%8B%D0%B9%20%D0%BA%D0%B0%D0%B1%D0%B8%D0%BD%D0%B5%D1%82.gif)
-#
-
-#### *Регистрация пользователя*
-![Регистрация пользователя](https://github.com/slychagin/mens-line-store/blob/master/demo_gifs/%D0%A0%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F.gif)
-#
-
-#### *Админ панель (администрирование Django)*
-![ЗАдмин панель](https://github.com/slychagin/mens-line-store/blob/master/demo_gifs/%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%20%D0%BF%D0%B0%D0%BD%D0%B5%D0%BB%D1%8C.gif)
+#### *Админка*
+![Админка](https://github.com/slychagin/online-test-app/blob/master/demo/admin.gif)
 #
 
 ### Что использовано для создания сайта:
