@@ -39,6 +39,5 @@
 - `git clone https://github.com/slychagin/online-test-app.git`;
 - у вас должен быть установлен Python;
 - установите все зависимости из файла requirements.txt;
-- также у вас должны быть все переменные окружения из файла .env-sample с 1 по 9 пункт;
-- `python manage.py runserver`;
+- `python manage.py runserver`.
 
