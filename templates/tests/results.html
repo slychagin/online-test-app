@@ -5,18 +5,13 @@
 
 <section id="hero1" class="d-flex align-items-center">
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
-
         <br>
         <br>
         <br>
-
         <div class="row justify-content-center">
-
             <div class="col-xl-12 col-lg-12 text-center">
-
                 <h2>Категория - {{ data.category.category_name }}</h2>
                 <br>
-
                 <h1>Тест "{{ data.test.test_name }}"</h1>
 
                 <div class="text-center">
@@ -24,7 +19,6 @@
                 </div>
                 <br>
                 <br>
-
                 <h2>Ваши результаты:</h2>
                 <br>
                 <h2>&#9989; Правильных ответов: {{ data.correct_answer_count }}/{{ test_question_amount }}</h2>
@@ -37,7 +31,6 @@
                     <a href="{% url 'tests' %}" class="btn btn-outline-primary"><i class="bi bi-arrow-left">
                     </i> К тестам!</a>
                 </div>
-
             </div>
         </div>
 
@@ -55,6 +48,7 @@ window.history.forward(1);
  window.history.pushState ('forward', null, '#');
 window.history.forward(1);
 })
+
 </script>
 
 {% endblock %}

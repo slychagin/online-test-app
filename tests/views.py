@@ -103,7 +103,8 @@ def question_details(request, category_slug, test_slug, question_id):
 
 
 def results(request, category_slug=None, test_slug=None):
-    """Show test results on separate page"""
+    """Show test results on separate page. Save results to database."""
+    question_list = Question.objects.filter(test__slug=test_slug)
     test_question_amount = len(Question.objects.filter(test__slug=test_slug))
 
     data = Results()
@@ -119,6 +120,7 @@ def results(request, category_slug=None, test_slug=None):
         'category_slug': category_slug,
         'test_slug': test_slug,
         'test_question_amount': test_question_amount,
-        'data': data
+        'data': data,
+        'question_list': question_list,
     }
     return render(request, 'tests/results.html', context)
