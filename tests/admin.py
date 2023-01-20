@@ -40,7 +40,7 @@ class QuestionAdmin(admin.ModelAdmin):
 
 class AnswerAdmin(admin.ModelAdmin):
     """Display Answer model fields in admin panel"""
-    list_display = ('answer', 'answer_pic', 'question', 'is_correct')
+    list_display = ('answer', 'answer_image', 'question', 'is_correct')
     list_per_page = 20
     list_max_show_all = 100
 
