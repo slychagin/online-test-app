@@ -50,6 +50,7 @@ class Answer(models.Model):
     objects = models.Manager()
 
     answer = models.CharField(max_length=200, verbose_name='Ответ')
+    answer_pic = models.ImageField(upload_to='photos/answers', default='default.jpg', verbose_name='Фото ответа')
     is_correct = models.BooleanField(default=False, verbose_name='Верно')
     question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name='Вопрос')
 
