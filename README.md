@@ -36,8 +36,12 @@
 - SQLite.
 
 ### Вы можете запустить этот проект локально просто сделав следующее:
-- `git clone https://github.com/slychagin/online-test-app.git`;
-- у вас должен быть установлен Python;
-- установите все зависимости из файла requirements.txt;
-- `python manage.py runserver`.
+1. `git clone https://github.com/slychagin/online-test-app.git`
+2. `python -m venv venv`
+3. `venv\Scripts\activate`
+4. `pip install -r requirements.txt`
+5. переименовать local_settings.example в local_settings.py и заполнить свои данные
+6. `python manage.py makemigrations`
+7. `python manage.py migrate`
+8. `python manage.py runserver`
 
